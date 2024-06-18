@@ -24,8 +24,6 @@ export const FriendlyDate = ({ created_at }) => {
 
   const friendlyDate = weekDay + " " + date + " " + month + " " + year;
 
-  console.log(month);
-
   return (
     <time pubdate="pubdate" dateTime="" title="">
       {friendlyDate}

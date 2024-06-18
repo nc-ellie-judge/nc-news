@@ -34,15 +34,18 @@ export const ArticleCommentsList = ({ article_id }) => {
     <article>
       <h3>Comments</h3>
       <ul>
-        {comments?.comments.map(({ comment_id, author, body }) => {
-          return (
-            <div>
-              <p>{comment_id}</p>
-              <p>{author}</p>
-              <p>{body}</p>
-            </div>
-          );
-        })}
+        {comments?.comments.map(
+          ({ comment_id, author, body, votes, created_at }) => {
+            return (
+              <div key={comment_id}>
+                <p>{author}</p>
+                <p>{body}</p>
+                <p>votes: {votes}</p>
+                <p>{created_at}</p>
+              </div>
+            );
+          }
+        )}
       </ul>
     </article>
   );
