@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FriendlyDate } from "../FriendlyDate/FriendlyDate";
+import { ArticleCommentsList } from "../ArticleCommentsList/ArticleCommentsList";
 
 export const SingleArticlePage = () => {
   const { article_id } = useParams();
@@ -47,6 +48,9 @@ export const SingleArticlePage = () => {
   return (
     <article>
       <header>
+        <div>
+          <p>Topic: {topic}</p>
+        </div>
         <h2>{title}</h2>
         <div>
           <address>
@@ -61,6 +65,15 @@ export const SingleArticlePage = () => {
       </header>
 
       <div>{body}</div>
+
+      <img src={article_img_url} alt="" width={200} />
+
+      <div>
+        <p>Votes: {votes}</p>
+        <p>Comments: {comment_count}</p>
+      </div>
+
+      <ArticleCommentsList article_id={article_id} />
     </article>
   );
 };
