@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import axios from "axios";
+import { ArticleCard } from "../ArticleCard/ArticleCard";
 
 export const ArticlesPage = () => {
   const { topic } = useParams();
@@ -39,7 +40,10 @@ export const ArticlesPage = () => {
       <h3>{state?.description} </h3>
       <ul>
         {articles?.map((article) => (
-          <li key={article.article_id}>{article.title}</li>
+          // <ArticleCard article={article} />
+          <Link key={article.article_id} to={`${article.article_id}`}>
+            {article.title}
+          </Link>
         ))}
       </ul>
     </div>
