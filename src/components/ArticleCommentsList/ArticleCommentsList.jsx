@@ -32,7 +32,8 @@ export const ArticleCommentsList = ({ article_id }) => {
 
   return (
     <article>
-      <h3>Comments</h3>
+      <h3>Join the conversation</h3>
+      <h3>{comments.comments.length} comments</h3>
       <ul>
         {comments?.comments.map(
           ({ comment_id, author, body, votes, created_at }) => {

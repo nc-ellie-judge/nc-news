@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useLocation, Link } from "react-router-dom";
 import axios from "axios";
-import { ArticleCard } from "../ArticleCard/ArticleCard";
+import { ArticlesNavBar } from "../ArticlesNavBar/ArticlesNavBar";
 
 export const ArticlesPage = () => {
   const { topic } = useParams();
@@ -9,18 +9,23 @@ export const ArticlesPage = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [topics, setTopics] = useState([]);
 
   useEffect(() => {
-    const fetchArticles = async () => {
+    const fetchArticleData = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get(
+        const topicsResponse = await axios.get(
+          "https://be-nc-news-rht5.onrender.com/api/topics"
+        );
+        const articlesResponse = await axios.get(
           "https://be-nc-news-rht5.onrender.com/api/articles",
           {
             params: { topic },
           }
         );
-        setArticles(response.data.articles);
+        setTopics(topicsResponse.data.topics);
+        setArticles(articlesResponse.data.articles);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -28,7 +33,7 @@ export const ArticlesPage = () => {
       }
     };
 
-    fetchArticles();
+    fetchArticleData();
   }, [topic]);
 
   if (isLoading) return <p>Loading...</p>;
@@ -36,6 +41,7 @@ export const ArticlesPage = () => {
 
   return (
     <div>
+      <ArticlesNavBar topics={topics} />
       <h2>Articles {topic ? `on ${topic}` : ""}</h2>
       <h3>{state?.description} </h3>
       <ul>
