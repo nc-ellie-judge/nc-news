@@ -1,7 +1,20 @@
 export const FriendlyDate = ({ created_at }) => {
   const d = new Date(created_at);
   const weekDays = ["Sun", "Mon", "Tues", "Weds", "Thu", "Fri", "Sat"];
-  const months = ["Jan", "Feb", "March"];
+  const months = [
+    "Jan",
+    "Feb",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 
   const weekDay = weekDays[d.getUTCDay()];
 
@@ -10,6 +23,8 @@ export const FriendlyDate = ({ created_at }) => {
   const month = months[d.getMonth()];
 
   const friendlyDate = weekDay + " " + date + " " + month + " " + year;
+
+  console.log(month);
 
   return (
     <time pubdate="pubdate" dateTime="" title="">
