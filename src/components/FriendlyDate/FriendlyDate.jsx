@@ -12,7 +12,7 @@ export const FriendlyDate = ({ created_at }) => {
   const friendlyDate = weekDay + " " + date + " " + month + " " + year;
 
   return (
-    <time pubdate dateTime="" title="">
+    <time pubdate="pubdate" dateTime="" title="">
       {friendlyDate}
     </time>
   );
