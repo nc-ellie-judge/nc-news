@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+import { CommentForm } from "../CommentForm/CommentForm";
 export const ArticleCommentsList = ({ article_id }) => {
   const [comments, setComments] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -33,7 +34,9 @@ export const ArticleCommentsList = ({ article_id }) => {
   return (
     <article>
       <h3>Join the conversation</h3>
+      <CommentForm />
       <h3>{comments.comments.length} comments</h3>
+
       <ul>
         {comments?.comments.map(
           ({ comment_id, author, body, votes, created_at }) => {

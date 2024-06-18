@@ -97,6 +97,7 @@ export const SingleArticlePage = () => {
         {voteError && (
           <p>Oops, something went wrong with your vote. Try again later</p>
         )}
+        {/* todo: add downvote? */}
         <button aria-label="upvote" onClick={() => handleClick(article_id)}>
           🫶
         </button>
