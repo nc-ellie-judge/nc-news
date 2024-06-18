@@ -40,8 +40,7 @@ export const ArticlesPage = () => {
       <h3>{state?.description} </h3>
       <ul>
         {articles?.map((article) => (
-          // <ArticleCard article={article} />
-          <Link key={article.article_id} to={`${article.article_id}`}>
+          <Link key={article.article_id} to={`/articles/${article.article_id}`}>
             {article.title}
           </Link>
         ))}
